@@ -13,9 +13,9 @@ apt-get -y update
 apt-get -y install git-core build-essential gfortran
 
 # Build latest stable release from OpenBLAS from source
-git clone -q --branch=master git://github.com/xianyi/OpenBLAS.git
-git checkout tags/v0.2.18
-(cd OpenBLAS \
+wget https://github.com/xianyi/OpenBLAS/archive/v0.2.18.zip
+unzip v0.2.18.zip
+(cd OpenBLAS-0.2.18 \
     && make DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=32 \
     && make install)
 
