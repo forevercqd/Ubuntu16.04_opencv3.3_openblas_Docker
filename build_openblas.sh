@@ -5,16 +5,14 @@
 # https://github.com/docker/docker/issues/332
 
 set -xe
-
-mkdir /tmp/build
-cd /tmp/build
+BUILD_DIR=/opt/openblas_build
+cd $BUILD_DIR
 
 apt-get -y update
-apt-get -y install git-core build-essential gfortran
+apt-get -y install build-essential gfortran
 
 # Build latest stable release from OpenBLAS from source
-wget https://github.com/xianyi/OpenBLAS/archive/v0.2.18.zip
-unzip v0.2.18.zip
+unzip OpenBLAS-0.2.18.zip
 (cd OpenBLAS-0.2.18 \
     && make DYNAMIC_ARCH=1 NO_AFFINITY=1 NUM_THREADS=32 \
     && make install)
@@ -24,11 +22,6 @@ unzip v0.2.18.zip
 # and that the libraries are in /opt/OpenBLAS/lib
 ldconfig
 
-#Minimize image size (gfortran is needed at runtime)
-# apt-get remove -y --purge git-core build-essential
-# apt-get autoremove -y
-# apt-get clean -y
-
 cd /
-rm -rf /tmp/build
+rm -rf $BUILD_DIR
 rm -rf /build_openblas.sh
