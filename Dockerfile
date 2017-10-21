@@ -41,6 +41,7 @@ RUN rm -rf /var/lib/apt/lists/*
 
 ######################################################
 # install the caffe envirment
+ADD build_caffe_env.sh build_caffe_env.sh
 RUN /bin/bash build_caffe_env.sh
 ######################################################
 

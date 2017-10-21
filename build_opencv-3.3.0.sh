@@ -11,6 +11,7 @@ cd opencv-3.3.0
 ls -al
 mkdir build
 cd build
+apt-get clean
 apt-get update
 apt-get install -y  build-essential
 apt-get install -y  cmake git libgtk2.0-dev pkg-config libavcodec-dev libavformat-dev libswscale-dev
