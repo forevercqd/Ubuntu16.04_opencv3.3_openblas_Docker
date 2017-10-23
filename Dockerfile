@@ -1,6 +1,8 @@
 FROM nvidia/cuda:8.0-cudnn7-devel-ubuntu16.04
 # base lib	
 RUN apt-get update && apt-get install -y --no-install-recommends \
+    subversion  \
+    zip \
     git \
     wget \
     curl \
