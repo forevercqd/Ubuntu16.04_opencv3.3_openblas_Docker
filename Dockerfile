@@ -12,11 +12,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 ######################################################
 # Install Java.
-ADD	install_java.sh	install_java.sh
-RUN /bin/bash install_java.sh
+ADD	build_java.sh	build_java.sh
+RUN /bin/bash build_java.sh
  
 # Define commonly used JAVA_HOME variable
-ENV JAVA_HOME /usr/local/java
+ENV JAVA_HOME /usr/local/java/jdk1.8.0
 ENV PATH $JAVA_HOME/bin:$PATH
  
 ######################################################
@@ -50,7 +50,7 @@ RUN /bin/bash build_caffe_env.sh
 # ADD so file
 ADD lib/ /usr/local/matting/lib/
 ADD java/ /data/java/
-ADD libwebp_ubuntu_x64/ /data/libwebp_ubuntu_x64/
+#ADD libwebp_ubuntu_x64/ /data/libwebp_ubuntu_x64/
 ENV LD_LIBRARY_PATH /usr/local/matting/lib:$LD_LIBRARY_PATH
 #ENV LD_PRELOAD="/usr/local/matting/lib/libwebp.so /usr/local/matting/lib/libwebpdemux.so /usr/local/matting/lib/libwebpmux.so /usr/local/matting/lib/libfcn.so /usr/local/lib/libopencv_imgcodecs.so /opt/OpenBLAS/lib/libopenblas.so"
 	

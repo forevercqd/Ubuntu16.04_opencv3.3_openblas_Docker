@@ -24,3 +24,4 @@ make install
 cd $BUILD_DIR
 rm opencv-3.3.0.zip
 rm -rf opencv-3.3.0
+rm -rf $BUILD_DIR
